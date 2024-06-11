@@ -1,5 +1,5 @@
 # Tef_Instaler
-## Projeto para fazer a junção de varios instaladores(1.0.9 - Completo).
+## Projeto para fazer a junção de varios instaladores(1.0.1) em c++.
 - instalar o tls com inserção da senha manualmente
 - instalação do driver do pin-pad com escolha do usuario.
 - Fazer a instalação da dll ou client.
@@ -11,7 +11,8 @@
 - Utilizar o upx para diminuir o tamanho do executavel(Aguardando a finalização da etapa anterior).
 ## comando de build:
 - Windows:
-  - pyinstaller --clean --onefile --add-data "Dependencias;Dependencias" --icon="Dependencias\Tefway.ico" --upx-dir="C:/Users/jkai/OneDrive/Área de Trabalho/upx-4.2.4-win64" Tefway_Instaler.py
+## Compilar:
+- g++ nome_do_arquivo.cpp -o nome_do_executavel
 ## proximos passos:
 1. Otimizar e revisar o codigo(Importante).
 2. Deixar mais amigavel a execução(+-).
