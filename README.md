@@ -17,3 +17,6 @@
 1. Otimizar e revisar o codigo(Importante).
 2. Deixar mais amigavel a execução(+-).
 3. Implementar uma interface grafica(Opcional).
+
+
+- Nome dos serviços tls
