@@ -10,9 +10,8 @@
 - gerar um fluxo para migração(Aguardando a finalização da etapa anterior).
 - Utilizar o upx para diminuir o tamanho do executavel(Aguardando a finalização da etapa anterior).
 ## comando de build:
-- Windows:
+- Windows: Rodar o script comandos
 ## Compilar:
-- g++ nome_do_arquivo.cpp -o nome_do_executavel
 ## proximos passos:
 1. Otimizar e revisar o codigo(Importante).
 2. Deixar mais amigavel a execução(+-).
