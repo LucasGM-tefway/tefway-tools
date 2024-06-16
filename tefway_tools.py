@@ -46,8 +46,25 @@ class Utils:
 
     @staticmethod
     def pinpad():
+        option = input("Escolha o PinPad\nGertec(G)\nIngenico(I)\nLane3000(L)\nVX_P2000(V)\n:").strip().lower()
+        while(True):
+            match option:
+                case 'g':Dependency.gertec();break
+                case 'i':Dependency.ingenico();break
+                case 'l':Dependency.lane();break
+                case 'v':Dependency.vx();break
+                case _:print("Opção Invalide")
 
-        pass
+    @staticmethod
+    def configurate_client():
+        print("Abrindo o Simulador.....")
+        Dependency.simulator()
+        print("Pressione Enter para fechar.....")
+
+    @staticmethod
+    def update_dll():
+        dest = input("Digite o path até a pasta do sistema:")
+        Dependency.dll(dest)
 
 class Pipeline:
 
@@ -55,6 +72,7 @@ class Pipeline:
         try:
             print("Iniciando a instalação do TLS")
             Dependency.tls()
+            input("pressione qualquer Enter para continuar.....")
             print("Testando o tls")
             test = Utils.test_tls()
             if test == 0:
@@ -62,7 +80,7 @@ class Pipeline:
             else:
                 Utils.restart_service("")
             input("pressione qualquer Enter para continuar.....")
-            
+            Utils.pinpad()
             input("pressione qualquer Enter para continuar.....")
             option = input("Escolha o metodo de comunicação DLL (D) ou Client (C):").strip().lower()
             while(True):
@@ -81,16 +99,26 @@ class Pipeline:
         Dependency.dtef()
         print("Pressione Enter para fechar.....")
 
-    def configurate_client():
-        print("Abrindo o Simulador.....")
-        Dependency.simulator()
-        print("Pressione Enter para fechar.....")
     
-    def install_pinpad():
-        pass
+    def reinstall_pinpad():
+        Utils.pinpad()
+    
+
+    def correct_dtef():
+        option = "Pressione Enter para continua ....."
+
 
 if __name__ == "__main__":
     try:
-        pass
+        while(True):
+            option = int(input("Escolha a opção:\n0.Sair\n1.Instalação Sitef\n2.Instalação D-TEF\n3.Reinstalar PinPad\n4.Atualizar DLL\n5.Abrir Simulador\n:"))
+            match option:
+                case 0:break
+                case 1:Pipeline.install_sitef()
+                case 2:Pipeline.install_dtef()
+                case 3:Utils.pinpad()
+                case 4:Dependency.dll()
+                case 5:Utils.configurate_client()
+                case _:print("Opção Invalida!")
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
