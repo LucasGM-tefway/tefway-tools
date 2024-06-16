@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 # Caminho para o diretório do UPX
 upx_dir = "C:/Users/jkai/OneDrive/Área de Trabalho/upx-4.2.4-win64"
@@ -19,17 +20,22 @@ for root, dirs, files in os.walk(pasta_a_excluir):
         arquivos_a_excluir.append(os.path.join(root, file))
 
 # Construir o comando PyInstaller
-comando_pyinstaller = (
-    f'pyinstaller --clean --onefile --add-data "Dependencias;Dependencias" '
-    f'--icon="{icone}" --upx-dir="{upx_dir}" '
-)
+comando_pyinstaller = [
+    'pyinstaller',
+    '--clean',
+    '--onefile',
+    '--exclude-module', 'tkinter',  # Exemplo de exclusão de módulo desnecessário
+    '--add-data', 'Dependencias;Dependencias',
+    '--icon', icone,
+    '--upx-dir', upx_dir
+]
 
 # Adicionar arquivos a serem excluídos do UPX
 for arquivo in arquivos_a_excluir:
-    comando_pyinstaller += f'--upx-exclude "{arquivo}" '
+    comando_pyinstaller.extend(['--upx-exclude', arquivo])
 
 # Adicionar o script principal
-comando_pyinstaller += f'{script_principal}'
+comando_pyinstaller.append(script_principal)
 
-# Imprimir o comando para ser executado no terminal
-print(comando_pyinstaller)
+# Rodagem do build para gerar o exe
+subprocess.run(comando_pyinstaller)

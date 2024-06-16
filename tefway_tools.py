@@ -5,36 +5,28 @@ import shutil
 
 class Dependency:
     @staticmethod
-    def tls():
-        Utils.run_exe('tls', 'tlscliwl.exe')
+    def tls():Utils.run_exe('tls', 'tlscliwl.exe')
 
     @staticmethod
-    def gertec():
-        Utils.run_exe('Gertec', 'Gertec-Full-Installer_2.2.2.0.exe')
+    def gertec():Utils.run_exe('Gertec', 'Gertec-Full-Installer_2.2.2.0.exe')
 
     @staticmethod
-    def ingenico():
-        Utils.run_exe('Ingenico', 'IngenicoUSBDrivers_3.36_setup_SIGNED.exe')
+    def ingenico():Utils.run_exe('Ingenico', 'IngenicoUSBDrivers_3.36_setup_SIGNED.exe')
 
     @staticmethod
-    def vx():
-        Utils.run_exe('VX_P200/32', 'silent_install_VerifoneUSBDriverUninstall.bat')
+    def vx():Utils.run_exe('VX_P200/32', 'silent_install_VerifoneUSBDriverUninstall.bat')
 
     @staticmethod
-    def lane():
-        Utils.run_exe('Lane 3000', 'IngenicoUSBDrivers_3.34_setup_SIGNED.exe')
+    def lane():Utils.run_exe('Lane 3000', 'IngenicoUSBDrivers_3.34_setup_SIGNED.exe')
 
     @staticmethod
-    def simulator():
-        Utils.run_exe('Simulador', 'SiTEF Simulador.exe')
+    def simulator():Utils.run_exe('Simulador', 'SiTEF Simulador.exe')
 
     @staticmethod
-    def client():
-        Utils.run_exe('clientsitef/7.0.3.1P r1/DISK1', 'Instala.exe')
+    def client():Utils.run_exe('clientsitef/7.0.3.1P r1/DISK1', 'Instala.exe')
 
     @staticmethod
-    def dtef():
-        Utils.run_exe('DTEF', 'Instalador_Linx_TEF_3.1.4.exe')
+    def dtef():Utils.run_exe('DTEF', 'Instalador_Linx_TEF_3.1.4.exe')
 
     @staticmethod
     def dll(dest_path):
