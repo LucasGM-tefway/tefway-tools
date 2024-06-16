@@ -76,6 +76,11 @@ class Utils:
         Dependency.dll(dest)
 
 
+    @staticmethod
+    def correct_dtef():
+        Utils.run_exe('Rotinas Update', '1)DPOS8GPSetup822071922.exe')
+
+
 class Pipeline:
     @staticmethod
     def install_sitef():
@@ -115,9 +120,7 @@ class Pipeline:
         Dependency.dtef()
         input("Pressione Enter para fechar.....")
 
-    @staticmethod
-    def reinstall_pinpad():
-        Utils.select_pinpad()
+
 
     @staticmethod
     def correct_dtef():
@@ -130,12 +133,13 @@ def main_menu():
         2: Pipeline.install_dtef,
         3: Utils.select_pinpad,
         4: Utils.update_dll,
-        5: Utils.configurate_client
+        5: Utils.configurate_client,
+        6: Utils.correct_dtef
     }
 
     while True:
         try:
-            option = int(input("Escolha a opção:\n0. Sair\n1. Instalação Sitef\n2. Instalação D-TEF\n3. Reinstalar PinPad\n4. Atualizar DLL\n5. Abrir Simulador\n:"))
+            option = int(input("Escolha a opção:\n0. Sair\n1. Instalação Sitef\n2. Instalação D-TEF\n3. Reinstalar PinPad\n4. Atualizar DLL\n5. Abrir Simulador\n6. Corrigir d-tef\n:"))
             if option == 0:
                 break
             elif option in options:
