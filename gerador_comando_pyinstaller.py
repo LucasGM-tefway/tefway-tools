@@ -10,7 +10,7 @@ pasta_a_excluir = "Dependencias/DLLL/clisitef-7.0.117.83.r1-Producao-Win32"
 icone = "Dependencias/Tefway.ico"
 
 # Arquivo Python principal
-script_principal = "Tefway_Instaler.py"
+script_principal = "tefway_tools.py"
 
 # Listar todos os arquivos na pasta a ser excluída
 arquivos_a_excluir = []
