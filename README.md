@@ -1,5 +1,5 @@
 # Tef_Instaler
-## Projeto para fazer a junção de varios instaladores(1.0.1) em c++.
+## Projeto para fazer a junção de varios instaladores(1.0.1) em (c++ Futuramente).
 - instalar o tls com inserção da senha manualmente
 - instalação do driver do pin-pad com escolha do usuario.
 - Fazer a instalação da dll ou client.
