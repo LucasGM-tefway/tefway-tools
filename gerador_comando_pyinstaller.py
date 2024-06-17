@@ -8,7 +8,7 @@ upx_dir = "C:/Users/jkai/OneDrive/Área de Trabalho/upx-4.2.4-win64"
 pasta_a_excluir = "Dependencias/DLLL/clisitef-7.0.117.83.r1-Producao-Win32"
 
 # Caminho para o ícone
-icone = "Dependencias/Tefway.ico"
+icone = "Dependencias/favicon.ico"
 
 # Arquivo Python principal
 script_principal = "tefway_tools.py"

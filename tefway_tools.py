@@ -102,7 +102,7 @@ class Pipeline:
             if test.returncode == 0:
                 print(test.stdout)
             else:
-                Utils.restart_service("NomeDoServico")  # Insira o nome correto do serviço
+                Utils.restart_service("tlsctrlsrv")
 
             input("Pressione Enter para continuar.....")
             Utils.select_pinpad()
