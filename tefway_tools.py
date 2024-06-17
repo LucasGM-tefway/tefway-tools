@@ -80,6 +80,14 @@ class Utils:
     def correct_dtef():
         Utils.run_exe('Rotinas Update', '1)DPOS8GPSetup822071922.exe')
 
+    @staticmethod
+    def correct_gp():
+        pass
+
+    @staticmethod
+    def correct_runtime():
+        pass    
+
 
 class Pipeline:
     @staticmethod
@@ -134,12 +142,14 @@ def main_menu():
         3: Utils.select_pinpad,
         4: Utils.update_dll,
         5: Utils.configurate_client,
-        6: Utils.correct_dtef
+        6: Utils.correct_dtef,
+        7: Utils.correct_gp,
+        8: Utils.correct_runtime
     }
 
     while True:
         try:
-            option = int(input("Escolha a opção:\n0. Sair\n1. Instalação Sitef\n2. Instalação D-TEF\n3. Reinstalar PinPad\n4. Atualizar DLL\n5. Abrir Simulador\n6. Corrigir d-tef\n:"))
+            option = int(input("Escolha a opção:\n0. Sair\n1. Instalação Sitef\n2. Instalação D-TEF\n3. Reinstalar PinPad\n4. Atualizar DLL\n5. Abrir Simulador\n6. Corrigir o (D-TEF)\n7. Corrigir o GP(D-TEF)\n8. Corrigir runtime (D-TEF)\n:"))
             if option == 0:
                 break
             elif option in options:
