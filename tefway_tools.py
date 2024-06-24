@@ -78,15 +78,17 @@ class Utils:
 
     @staticmethod
     def correct_dtef():
-        Utils.run_exe('Rotinas Update', '1)DPOS8GPSetup822071922.exe')
+        Utils.run_exe('Rotinas Update', '4)DPOS8Setup822150128 (1).exe')
 
     @staticmethod
     def correct_gp():
+        Utils.run_exe('Rotinas Update', '1)DPOS8GPSetup822071922.exe')
+        Utils.run_exe('Rotinas Update','2)DPOS8GPAtualizacaoSetup822150107.exe')
         pass
 
     @staticmethod
     def correct_runtime():
-        pass    
+        Utils.run_exe('Rotinas Update', '3)DTEF8RuntimeSetup822150107.exe')
 
 
 class Pipeline:

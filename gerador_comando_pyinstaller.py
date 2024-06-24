@@ -13,9 +13,17 @@ icone = "Dependencias/favicon.ico"
 # Arquivo Python principal
 script_principal = "tefway_tools.py"
 
-# Listar todos os arquivos na pasta a ser excluída
+# Listar todos os arquivos na pasta a ser excluída e na pasta de dependências
 arquivos_a_excluir = []
+
+# Adicionar arquivos .dll da pasta a ser excluída
 for root, dirs, files in os.walk(pasta_a_excluir):
+    for file in files:
+        if file.lower().endswith('.dll'):
+            arquivos_a_excluir.append(os.path.join(root, file))
+
+# Adicionar todos os arquivos da pasta Dependencias
+for root, dirs, files in os.walk('Dependencias'):
     for file in files:
         arquivos_a_excluir.append(os.path.join(root, file))
 
@@ -37,5 +45,8 @@ for arquivo in arquivos_a_excluir:
 # Adicionar o script principal
 comando_pyinstaller.append(script_principal)
 
-# Rodagem do build para gerar o exe
-subprocess.run(comando_pyinstaller)
+# Executar o comando diretamente a partir do script Python
+try:
+    subprocess.run(comando_pyinstaller)
+except subprocess.CalledProcessError as e:
+    print(f"Erro ao executar PyInstaller: {e.stderr}")
