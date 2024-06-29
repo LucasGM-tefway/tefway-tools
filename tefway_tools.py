@@ -5,28 +5,28 @@ import shutil
 
 class Dependency:
     @staticmethod
-    def tls():Utils.run_exe('tls', 'tlscliwl.exe')
+    def tls():Utils.run_executable('tls', 'tlscliwl.exe')
 
     @staticmethod
-    def gertec():Utils.run_exe('Gertec', 'Gertec-Full-Installer_2.2.2.0.exe')
+    def gertec():Utils.run_executable('Gertec', 'Gertec-Full-Installer_2.2.2.0.exe')
 
     @staticmethod
-    def ingenico():Utils.run_exe('Ingenico', 'IngenicoUSBDrivers_3.36_setup_SIGNED.exe')
+    def ingenico():Utils.run_executable('Ingenico', 'IngenicoUSBDrivers_3.36_setup_SIGNED.exe')
 
     @staticmethod
-    def vx():Utils.run_exe('VX_P200/32', 'silent_install_VerifoneUSBDriverUninstall.bat')
+    def vx():Utils.run_executable('VX_P200/32', 'silent_install_VerifoneUSBDriverUninstall.bat')
 
     @staticmethod
-    def lane():Utils.run_exe('Lane 3000', 'IngenicoUSBDrivers_3.34_setup_SIGNED.exe')
+    def lane():Utils.run_executable('Lane 3000', 'IngenicoUSBDrivers_3.34_setup_SIGNED.exe')
 
     @staticmethod
-    def simulator():Utils.run_exe('Simulador', 'SiTEF Simulador.exe')
+    def simulator():Utils.run_executable('Simulador', 'SiTEF Simulador.exe')
 
     @staticmethod
-    def client():Utils.run_exe('clientsitef/7.0.3.1P r1/DISK1', 'Instala.exe')
+    def client():Utils.run_executable('clientsitef/7.0.3.1P r1/DISK1', 'Instala.exe')
 
     @staticmethod
-    def dtef():Utils.run_exe('DTEF', 'Instalador_Linx_TEF_3.1.4.exe')
+    def dtef():Utils.run_executable('DTEF', 'Instalador_Linx_TEF_3.1.4.exe')
 
     @staticmethod
     def dll(dest_path):
@@ -37,13 +37,35 @@ class Dependency:
 
 class Utils:
     @staticmethod
-    def run_exe(directory, executable):
+    def run_executable(directory, executable):
         path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dependencias', directory, executable)
         process = subprocess.Popen([path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         stdout, stderr = process.communicate()
         if process.returncode != 0:
             raise Exception(f"Erro na execução do executável: {stderr}")
         return stdout
+
+
+    @staticmethod
+    def download_dependency(url, directory):
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dependencias', directory)
+        os.makedirs(path, exist_ok=True)
+        local_filename = os.path.join(path, os.path.basename(url))
+        process = subprocess.Popen([
+            "curl",
+            "-o",
+            local_filename,
+            url
+        ],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
+        )
+        stdout, stderr = process.communicate()
+        if process.returncode != 0:
+            raise Exception(f"Erro na execução do curl: {stderr}")
+        return stdout
+
 
     @staticmethod
     def restart_service(service_name):
@@ -68,7 +90,7 @@ class Utils:
     def configurate_client():
         print("Abrindo o Simulador.....")
         Dependency.simulator()
-        input("Pressione Enter para fechar.....")
+        input("Pressione Enter para fechar..... ")
 
     @staticmethod
     def update_dll():
@@ -78,26 +100,27 @@ class Utils:
 
     @staticmethod
     def correct_dtef():
-        Utils.run_exe('Rotinas Update', '4)DPOS8Setup822150128 (1).exe')
+        Utils.run_executable('Rotinas Update', '4)DPOS8Setup822150128 (1).exe')
 
     @staticmethod
     def correct_gp():
-        Utils.run_exe('Rotinas Update', '1)DPOS8GPSetup822071922.exe')
-        Utils.run_exe('Rotinas Update','2)DPOS8GPAtualizacaoSetup822150107.exe')
+        Utils.run_executable('Rotinas Update', '1)DPOS8GPSetup822071922.exe')
+        Utils.run_executable('Rotinas Update','2)DPOS8GPAtualizacaoSetup822150107.exe')
         pass
 
     @staticmethod
     def correct_runtime():
-        Utils.run_exe('Rotinas Update', '3)DTEF8RuntimeSetup822150107.exe')
+        Utils.run_executable('Rotinas Update', '3)DTEF8RuntimeSetup822150107.exe')
 
 
 class Pipeline:
     @staticmethod
     def install_sitef():
+
         try:
             print("Iniciando a instalação do TLS")
             Dependency.tls()
-            input("Pressione Enter para continuar.....")
+            input("Pressione Enter para continuar..... ")
 
             print("Testando o TLS")
             test = Utils.test_tls()
@@ -106,7 +129,7 @@ class Pipeline:
             else:
                 Utils.restart_service("tlsctrlsrv")
 
-            input("Pressione Enter para continuar.....")
+            input("Pressione Space + Enter para continuar.....")
             Utils.select_pinpad()
             input("Pressione Enter para continuar.....")
 
@@ -130,11 +153,6 @@ class Pipeline:
         Dependency.dtef()
         input("Pressione Enter para fechar.....")
 
-
-
-    @staticmethod
-    def correct_dtef():
-        input("Pressione Enter para continuar.....")
 
 
 def main_menu():
